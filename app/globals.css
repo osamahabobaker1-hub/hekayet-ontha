@@ -1,0 +1,331 @@
+/* استيراد الخطوط: كايرو للنصوص العادية وأميري للعناوين الفخمة */
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===========================
+   المتغيرات الأساسية
+=========================== */
+:root {
+  --primary-pink: #e8d0ca;
+  --deep-blue: #3a4b63;
+  --soft-white: #fdf9f8;
+  --card-bg: #fdf9f8;
+  --text-main: #3a4b63;
+  --text-muted: #8a8a8a;
+  --border-color: #e8d0ca;
+  --shadow-soft: 0 4px 20px rgba(58, 75, 99, 0.08);
+  --shadow-hover: 0 12px 40px rgba(58, 75, 99, 0.15);
+  --radius-card: 20px;
+  --radius-btn: 30px;
+}
+
+/* ===========================
+   الأساس العام
+=========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Cairo', sans-serif;
+  background-color: #fdf9f8;
+  color: var(--text-main);
+  direction: rtl;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===========================
+   العناوين
+=========================== */
+h1, h2, h3 {
+  font-family: 'Amiri', serif;
+  color: var(--deep-blue);
+  line-height: 1.4;
+}
+
+h1 { font-size: clamp(28px, 5vw, 48px); font-weight: 700; }
+h2 { font-size: clamp(22px, 4vw, 36px); font-weight: 700; }
+h3 { font-size: clamp(16px, 2.5vw, 22px); font-weight: 600; }
+
+p {
+  font-family: 'Cairo', sans-serif;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s ease;
+}
+
+/* ===========================
+   الشريط العلوي المتحرك
+=========================== */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-33.33%); }
+}
+
+/* ===========================
+   البطاقات
+=========================== */
+.product-card {
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* ===========================
+   الأزرار
+=========================== */
+.btn-primary {
+  background-color: var(--deep-blue);
+  color: white;
+  border: none;
+  border-radius: var(--radius-btn);
+  padding: 12px 32px;
+  font-family: 'Cairo', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary:hover {
+  background-color: #2d3a4f;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(58, 75, 99, 0.3);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--deep-blue);
+  border: 2px solid var(--deep-blue);
+  border-radius: var(--radius-btn);
+  padding: 10px 28px;
+  font-family: 'Cairo', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background-color: var(--deep-blue);
+  color: white;
+}
+
+.btn-cart {
+  background-color: var(--deep-blue);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.btn-cart:hover {
+  background-color: #e8d0ca;
+  color: var(--deep-blue);
+  transform: scale(1.1);
+}
+
+/* ===========================
+   عناوين الأقسام
+=========================== */
+.section-title {
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--deep-blue);
+  margin-bottom: 30px;
+  border-right: 5px solid var(--deep-blue);
+  padding-right: 14px;
+  font-family: 'Cairo', sans-serif;
+}
+
+/* ===========================
+   الشبكة (Grid)
+=========================== */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .products-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ===========================
+   الحاوية الرئيسية
+=========================== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ===========================
+   الـ Badge / الوسوم
+=========================== */
+.badge {
+  background-color: var(--primary-pink);
+  color: var(--deep-blue);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.badge-new {
+  background-color: var(--deep-blue);
+  color: white;
+}
+
+/* ===========================
+   حقول الإدخال
+=========================== */
+input, textarea, select {
+  font-family: 'Cairo', sans-serif;
+  direction: rtl;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--deep-blue) !important;
+}
+
+/* ===========================
+   شريط التمرير
+=========================== */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8f4f2;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-pink);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--deep-blue);
+}
+
+/* ===========================
+   الفوتر
+=========================== */
+footer {
+  background-color: var(--deep-blue);
+  color: white;
+  font-family: 'Cairo', sans-serif;
+}
+
+/* ===========================
+   الأيقونات الدائرية للمناسبات
+=========================== */
+.occasion-circle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.occasion-circle:hover {
+  transform: translateY(-4px);
+}
+
+.occasion-circle .icon-wrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  box-shadow: var(--shadow-soft);
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.occasion-circle:hover .icon-wrapper {
+  border-color: var(--deep-blue);
+  box-shadow: var(--shadow-hover);
+}
+
+.occasion-circle span {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--deep-blue);
+}
+
+/* ===========================
+   كلاسات مساعدة إضافية
+=========================== */
+.hero { background: linear-gradient(135deg, #fdf9f8 0%, #f5ebe8 100%); }
+.primary { color: var(--deep-blue); }
+.text-pink { color: var(--primary-pink); }
+.bg-pink { background-color: var(--primary-pink); }
+.bg-blue { background-color: var(--deep-blue); }
+
+/* ===========================
+   الجوال
+=========================== */
+@media (max-width: 768px) {
+  .mobile-menu-btn {
+    display: block !important;
+  }
+
+  .section-title {
+    font-size: 20px;
+  }
+
+  .btn-primary, .btn-secondary {
+    padding: 10px 22px;
+    font-size: 13px;
+  }
+}
